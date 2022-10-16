@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
 
@@ -7,6 +8,14 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     component: Home
   },
+  {
+    path: '/video',
+    name: 'video',
+    component: () => import(/* webpackChunkName: "about" */ '../views/video/index.vue')
+  },
+
+
+
   {
     path: '/about',
     name: 'About',
