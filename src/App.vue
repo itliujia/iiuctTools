@@ -1,12 +1,20 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: 刘童鞋
+ * @Date: 2022-10-16 16:40:09
+ * @LastEditors: 刘童鞋
+ * @LastEditTime: 2022-10-16 16:50:32
+-->
 <template>
-  <div id="nav">
+  <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
-  </div>
+  </div> -->
   <router-view/>
 </template>
 
-<style lang="scss">
+<!-- <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,4 +35,4 @@
     }
   }
 }
-</style>
+</style> -->
