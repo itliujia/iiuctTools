@@ -5,7 +5,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:28:02
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-11-05 13:47:15
+ * @LastEditTime: 2022-11-05 13:49:10
 -->
 <template>
     <Headers :isHomePage="true" />
@@ -49,7 +49,7 @@
                         <el-descriptions-item>
                             <template #label>
                                 <div class="cell-item">
-                                    发布时间
+                                    发布时间2
                                 </div>
                             </template>
 
