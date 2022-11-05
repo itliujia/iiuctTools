@@ -4,11 +4,36 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 16:44:40
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-10-16 19:28:17
+ * @LastEditTime: 2022-11-04 23:12:40
 -->
 <template>
-<Headers :isHomePage="isHomePage" />
-  <homeMain >
+  <Headers :isHomePage="isHomePage" />
+  <homeMain>
+
+    <div class="nya-container pt" v-for="(typeItem,typeIndex) in  toolDataList" :key="typeIndex">
+      <div class="nya-title">
+        <!-- <Icon class="eva eva-cube-outline" :icon="typeItem.iconName"></Icon> -->
+        <!-- <component class="xxx" :is="typeItem.iconName"></component> -->
+
+
+        <el-icon>
+          <Document />
+        </el-icon>
+        <span>{{typeItem.type}}</span>
+      </div>
+      <span class="nya-container-subtitle"></span>
+      <template v-for="(item,index) in  toolDataList[typeIndex].toolList" :key="index">
+        <a @click="jumpPage(item.toolUrl)" target="_self" class="el-tooltip tools-btn">
+
+          {{item.toolTitls}} </a>
+      </template>
+    </div>
+
+
+
+
+
+
     <div class="nya-container pt">
       <div class="nya-title">
         <i class="eva eva-cube-outline"></i><span>视频工具</span>
@@ -58,9 +83,38 @@ import { useRouter } from "vue-router"
 import { watch, ref } from 'vue'
 
 const router = useRouter()
+
+let toolDataList = ref(
+  [
+    {
+      type: '其他工具',
+      toolList: [
+        {
+          toolTitls: 'RGB转换',
+          toolUrl: '/'
+        }, {
+          toolTitls: '时间戳转换',
+          toolUrl: '4'
+        }
+
+      ]
+    }
+  ]
+)
+
+const jumpPage = (url: string) => {
+  router.push(url)
+}
+
+
+
 const ooo = () => {
-  router.push("/video")
+  router.push("/video/douyin")
 }
 let isHomePage = false
+
+document.title = '小合集工具箱'
+
+
 </script>
 

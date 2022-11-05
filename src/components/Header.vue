@@ -4,15 +4,17 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 16:47:37
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-10-16 19:14:50
+ * @LastEditTime: 2022-11-04 23:09:16
 -->
 <template>
     <header class="navbar">
         <h1 class="title">
             <a @click="goHome" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
-                小合集
+                小合集工具箱
+                
             </a>
         </h1>
+        <div class="miniTitle">iiuctTools</div>
         <div icon="person-outline" class="panel">
             <div class="login-text">
                 <a href="/" title="backhome" class="nuxt-link-active" v-if="isHomePage"><i
@@ -39,3 +41,12 @@ const goHome = () => {
 isHomePage=ref(props.isHomePage)
 console.log(props)
 </script>
+
+<style>
+.miniTitle{
+    margin: 10px 0;
+    font-size: 1.5em;
+    color:gray;
+    letter-spacing: 3px;
+}
+</style>

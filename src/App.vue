@@ -4,7 +4,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 16:40:09
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-10-16 19:25:46
+ * @LastEditTime: 2022-10-17 00:12:10
 -->
 <template>
   <!-- <div id="nav">
@@ -62,9 +62,14 @@ import Sider from '@/components/Sider.vue'
 </style> -->
 
 
-<style>
+<style lang="scss">
 @import "assets/css/5e944c6.css";
-@import "assets/css/element-theme-blue.css";
+// @import "assets/css/element-theme-blue.css";
 @import "assets/css/10cde71.css";
 @import "assets/css/e1bc80b.css";
+
+td{
+  word-break:break-all; 
+}
+
 </style>

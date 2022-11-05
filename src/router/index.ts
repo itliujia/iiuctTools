@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: 刘童鞋
+ * @Date: 2022-10-16 16:40:09
+ * @LastEditors: 刘童鞋
+ * @LastEditTime: 2022-10-16 19:35:06
+ */
 
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
@@ -9,9 +17,9 @@ const routes: Array<RouteRecordRaw> = [
     component: Home
   },
   {
-    path: '/video',
-    name: 'video',
-    component: () => import(/* webpackChunkName: "about" */ '../views/video/index.vue')
+    path: '/video/douyin',
+    name: 'douyin',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Video/douyin/index.vue')
   },
 
 
