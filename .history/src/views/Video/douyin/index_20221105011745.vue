@@ -1,11 +1,11 @@
 
 <!--
  * @Descripttion: 抖音视频解析
- * @version:
+ * @version: 
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:28:02
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-11-05 13:47:15
+ * @LastEditors: 刘童鞋
+ * @LastEditTime: 2022-11-05 01:17:45
 -->
 <template>
     <Headers :isHomePage="true" />
@@ -33,7 +33,8 @@
                 <el-col :lg="6" :xs="24" style="margin-right:10px;margin-top: 10px;">
                     <!-- <el-image style="height: 100%"
                     src="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" fit="cover" /> -->
-                    <vue3VideoPlay v-bind="options" :poster='videoData.cover' />
+                    <vue3VideoPlay v-bind="options"
+                        :poster='videoData.cover' />
                 </el-col>
                 <el-col :lg="16" :xs="24" style="margin-top: 10px;">
                     <el-descriptions :column="1" border>
@@ -44,12 +45,12 @@
                                 </div>
                             </template>
 
-                            {{ videoData.title }}
+                            {{videoData.title}}
                         </el-descriptions-item>
                         <el-descriptions-item>
                             <template #label>
                                 <div class="cell-item">
-                                    发布时间
+                                    描述
                                 </div>
                             </template>
 
@@ -62,7 +63,7 @@
                                 </div>
                             </template>
 
-                            {{ videoData.author }}
+                            {{videoData.author}}
                         </el-descriptions-item>
                         <el-descriptions-item>
                             <template #label>
@@ -71,7 +72,7 @@
                                 </div>
                             </template>
                             <el-link :href="videoData.cover" target="_blank">
-                                {{ videoData.cover }}</el-link>
+                                {{videoData.cover}}</el-link>
                         </el-descriptions-item>
                     </el-descriptions>
 
@@ -145,7 +146,7 @@
 <script lang="ts" setup>
 
 import Headers from '@/components/Header.vue'
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive,onMounted } from 'vue'
 import { Download } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
@@ -170,42 +171,42 @@ const options = reactive({
     control: false
 })
 
-let URL = ref('111111111'), result = ref(false), loading = ref(true), videoData = ref({})
+let URL = ref('111111111'), result = ref(false), loading = ref(true),videoData=ref({})
 
 let parse = () => {
     let regex = /http[s]?:\/\/[\w.]+[\w\/]*[\w.]*\??[\w=&:\-\+\%]*[/]*/;
-    if (URL.value.match(regex)) {
-        var videoUrl = URL.value.match(regex)[0];
+    if(URL.value.match(regex)){
+        var videoUrl =  URL.value.match(regex)[0];
 
 
-        axios.get('/api/video/videoDate', { params: { videoUrl } }).then(
-            response => {
-                console.log('请求成功了', response.data)
-                videoData.value = response.data.data.data
-                loading.value = false
-                result.value = true
-                options.src = response.data.data.data.url
-            },
-            error => {
-                console.log('请求失败了', error.message)
-            }
-        )
-
-
-
+        axios.get('/api/video/videoDate',{params:{videoUrl}}).then(
+					response => {
+						console.log('请求成功了',response.data)
+                       videoData.value= response.data.data.data
+                       loading.value=false
+                        result.value = true
+                        options.src=response.data.data.data.url
+					},
+					error => {
+						console.log('请求失败了',error.message)
+					}
+				)
 
 
 
+       
 
 
+      
 
-
-    } else {
+  
+        
+    }else{
         ElMessage.error('你输入的链接有误，没有识别到抖音链接.')
     }
-
-
-
+    
+    
+   
 }
 
 const tableData = [
