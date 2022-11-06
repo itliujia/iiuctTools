@@ -39,7 +39,7 @@
         <i class="eva eva-cube-outline"></i><span>视频工具</span>
       </div>
       <span class="nya-container-subtitle"></span>
-      <a @click="ooo" target="_self" class="el-tooltip tools-btn">
+      <a @click="ooo()" target="_self" class="el-tooltip tools-btn">
         抖音视频解析 </a>
       <a href="mask/index.html" target="_self" class="el-tooltip tools-btn">
         视频比例调节 </a>
@@ -91,7 +91,7 @@ let toolDataList = ref(
       toolList: [
         {
           toolTitls: 'RGB转换',
-          toolUrl: '/'
+          toolUrl: '/rgb/index'
         }, {
           toolTitls: '时间戳转换',
           toolUrl: '4'

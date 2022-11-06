@@ -4,7 +4,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 16:40:09
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-10-16 19:35:06
+ * @LastEditTime: 2022-11-06 23:46:25
  */
 
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
@@ -20,6 +20,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/video/douyin',
     name: 'douyin',
     component: () => import(/* webpackChunkName: "about" */ '../views/Video/douyin/index.vue')
+  },
+  {
+    path: '/rgb/index',
+    name: 'rgb',
+    component: () => import(/* webpackChunkName: "about" */ '../views/rgb/index.vue')
   },
 
 
