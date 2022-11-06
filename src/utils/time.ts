@@ -1,3 +1,11 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: 刘童鞋
+ * @Date: 2022-11-07 00:38:56
+ * @LastEditors: 刘童鞋
+ * @LastEditTime: 2022-11-07 00:49:59
+ */
 
 
 //获取标准时间
@@ -32,18 +40,6 @@ export function getLastTime(time = 1661420741, type = 'time') {
 
 }
 
-//获取当前时间戳
-export function getTimestamp(timeType = 'day', digits = 1, dayNum = 0) {
 
-	if (timeType == 'day') {
-		var timestamp = 
-		parseInt((new Date(new Date().toLocaleDateString()).getTime() + (86400000 * dayNum)) 
-		/ (Math.pow(digits, 3)))
-	}
-	else {
-		var timestamp = parseInt((new Date()) / (Math.pow(digits, 3)))
-	}
-	return timestamp
-}
 
-export default { getLastTime, getTimestamp }
+export default { getLastTime }
