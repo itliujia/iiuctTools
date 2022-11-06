@@ -5,7 +5,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:28:02
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-05 01:17:45
+ * @LastEditTime: 2022-11-07 00:48:04
 -->
 <template>
     <Headers :isHomePage="true" />
@@ -41,7 +41,7 @@
                         <el-descriptions-item>
                             <template #label>
                                 <div class="cell-item">
-                                    标题
+                                    视频标题
                                 </div>
                             </template>
 
@@ -50,16 +50,16 @@
                         <el-descriptions-item>
                             <template #label>
                                 <div class="cell-item">
-                                    描述
+                                    发布时间
                                 </div>
                             </template>
 
-                            18100000000
+                            {{getLastTime(videoData.time)}}
                         </el-descriptions-item>
                         <el-descriptions-item>
                             <template #label>
                                 <div class="cell-item">
-                                    作者
+                                    视频作者
                                 </div>
                             </template>
 
@@ -68,11 +68,10 @@
                         <el-descriptions-item>
                             <template #label>
                                 <div class="cell-item">
-                                    封面图片
+                                    视频获赞
                                 </div>
                             </template>
-                            <el-link :href="videoData.cover" target="_blank">
-                                {{videoData.cover}}</el-link>
+                           {{videoData.like}}
                         </el-descriptions-item>
                     </el-descriptions>
 
@@ -150,11 +149,10 @@ import { ref, reactive,onMounted } from 'vue'
 import { Download } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
+import { getLastTime } from '@/utils/time'
 import axios from 'axios'
 
-
-
-
+getLastTime
 
 const options = reactive({
     width: '100%',
@@ -171,7 +169,7 @@ const options = reactive({
     control: false
 })
 
-let URL = ref('111111111'), result = ref(false), loading = ref(true),videoData=ref({})
+let URL = ref(''), result = ref(false), loading = ref(true),videoData=ref({})
 
 let parse = () => {
     let regex = /http[s]?:\/\/[\w.]+[\w\/]*[\w.]*\??[\w=&:\-\+\%]*[/]*/;
