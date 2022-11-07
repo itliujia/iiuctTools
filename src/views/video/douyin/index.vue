@@ -5,7 +5,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:28:02
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-07 00:48:04
+ * @LastEditTime: 2022-11-08 00:24:17
 -->
 <template>
     <Headers :isHomePage="true" />
@@ -16,7 +16,7 @@
             </div><span class="nya-container-subtitle"></span>
             <form class="el-form nya-input-btn">
                 <span class="nya-subtitle">请输入视频链接</span>
-                <el-input v-model="URL" placeholder="请输入视频分享链接" class="input-with-select">
+                <el-input v-model="vurl" placeholder="请输入视频分享链接" class="input-with-select">
                     <template #append>
                         <el-button type="primary" @click="parse">开始解析</el-button>
                     </template>
@@ -31,10 +31,7 @@
         <div v-loading="loading">
             <el-row>
                 <el-col :lg="6" :xs="24" style="margin-right:10px;margin-top: 10px;">
-                    <!-- <el-image style="height: 100%"
-                    src="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" fit="cover" /> -->
-                    <vue3VideoPlay v-bind="options"
-                        :poster='videoData.cover' />
+                    <vue3VideoPlay v-bind="options" :poster='videoData.cover' />
                 </el-col>
                 <el-col :lg="16" :xs="24" style="margin-top: 10px;">
                     <el-descriptions :column="1" border>
@@ -45,7 +42,7 @@
                                 </div>
                             </template>
 
-                            {{videoData.title}}
+                            {{ videoData.title }}
                         </el-descriptions-item>
                         <el-descriptions-item>
                             <template #label>
@@ -54,7 +51,7 @@
                                 </div>
                             </template>
 
-                            {{getLastTime(videoData.time)}}
+                            {{ getLastTime(videoData.time) }}
                         </el-descriptions-item>
                         <el-descriptions-item>
                             <template #label>
@@ -63,7 +60,7 @@
                                 </div>
                             </template>
 
-                            {{videoData.author}}
+                            {{ videoData.author }}
                         </el-descriptions-item>
                         <el-descriptions-item>
                             <template #label>
@@ -71,7 +68,7 @@
                                     视频获赞
                                 </div>
                             </template>
-                           {{videoData.like}}
+                            {{ videoData.like }}
                         </el-descriptions-item>
                     </el-descriptions>
 
@@ -80,26 +77,39 @@
             <el-table :data="tableData" style="width: 100%;margin-top:20px">
                 <el-table-column prop="date" label="类型">
                     <template #default="scope">
-                        <el-tag type="success" disable-transitions>mp4
+                        <el-tag :type="scope.row.type == 'mp4' ? 'success' : ''" disable-transitions>{{ scope.row.type
+                        }}
                         </el-tag>
                     </template>
                 </el-table-column>
-                <el-table-column prop="name" label="清晰度">
+                <el-table-column prop="name" label="时长">
                     <template #default="scope">
-                        <el-tag type="success" disable-transitions>720p
-                        </el-tag>
+                        {{ formatDuring(scope.row.duration) }}
+
                     </template>
                 </el-table-column>
                 <el-table-column align="center" label="操作">
                     <template #default="scope">
-                        <el-tooltip class="box-item" effect="dark" content="下载（注意事项：如果弹出新窗口，则按【Ctrl + S】键进行下载）"
-                            placement="top">
-                            <el-button type="primary" size="small" @click="handleEdit(scope.$index, scope.row)">
-                                <el-icon>
-                                    <Download />
-                                </el-icon>
-                            </el-button>
-                        </el-tooltip>
+                        <el-button-group>
+                            <el-tooltip class="box-item" effect="dark" content="下载（注意事项：如果弹出新窗口，则按【Ctrl + S】键进行下载）"
+                                placement="top">
+                                <el-button type="primary" size="small" @click="handleEdit(scope.$index, scope.row)">
+                                    <el-icon>
+                                        <Download />
+                                    </el-icon>
+                                下载</el-button>
+                            </el-tooltip>
+
+                            <el-tooltip class="box-item" effect="dark" content="预览（注意事项：如果出现403异常，则在403页面刷新一下）"
+                                placement="top">
+                                <el-button type="warning" size="small" @click="handleView(scope.$index, scope.row)">
+                                    <el-icon>
+                                        <View />
+                                    </el-icon>
+                                预览</el-button>
+                            </el-tooltip>
+                        </el-button-group>
+
                     </template>
                 </el-table-column>
             </el-table>
@@ -120,14 +130,7 @@
             <span>支持视频链接格式</span>
         </div><span class="nya-container-subtitle"></span>
         <ul class="nya-list">
-            <li>https://v.douyin.com/JxWkXxk/（手机分享链接）</li>
-            <li>https://www.iesdouyin.com/share/video/6896035081186561280/?region=CN&mid=6888927402480061197&u_code=0
-            </li>
-            <li>https://www.douyin.com/video/7098316607067311393</li>
-            <li>https://www.douyin.com/discover?enter=guide&modal_id=7061481651523587363</li>
-            <li>https://www.douyin.com/user/MS4wLjABAAAA7utrZynvVjHZlU4iiy-3FLpNBgzXZmDROVtz6jZOSV0?modal_id=6994135003496074527
-            </li>
-            <li>https://www.douyin.com/hot?modal_id=7144638324991348003</li>
+            <li>https://v.douyin.com/JxWkXxk/</li>
         </ul>
     </div>
     <div class="nya-container pt">
@@ -145,14 +148,15 @@
 <script lang="ts" setup>
 
 import Headers from '@/components/Header.vue'
-import { ref, reactive,onMounted } from 'vue'
-import { Download } from '@element-plus/icons-vue'
+import { ref, reactive } from 'vue'
+import { Download, View } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
-import { getLastTime } from '@/utils/time'
+import { getLastTime, formatDuring } from '@/utils/time'
 import axios from 'axios'
 
 getLastTime
+formatDuring
 
 const options = reactive({
     width: '100%',
@@ -169,56 +173,81 @@ const options = reactive({
     control: false
 })
 
-let URL = ref(''), result = ref(false), loading = ref(true),videoData=ref({})
+let vurl = ref(''), result = ref(false), loading = ref(true), videoData = ref({}), tableData = ref([])
+
+
+let handleEdit = (a: any, b: any) => {
+    console.log(a, b);
+    // window.open(b.url)
+    download(b.url, b.title, b.type)
+
+
+}
+
+let handleView = (a: any, b: any) => {
+    window.open(b.url)
+
+}
+
+let download = (fileUrl: string, title: string, type: string) => {
+    //   var fileUrl = 'http://172.18.124.46:8886/dataExport/downloadSampledata'
+    axios({
+        method: 'get',
+        url: fileUrl,
+        responseType: 'blob'  // 二进制流文件
+    }).then(res => {
+        const link = document.createElement('a')
+        const blob = new Blob([res.data], { type: 'application/vnd.ms-excel' })
+        link.style.display = 'none'
+        link.href = URL.createObjectURL(blob)
+        link.setAttribute('download', `${title}.${type}`)
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }).catch(req => { console.log('error' + req) })
+}
+
+
 
 let parse = () => {
     let regex = /http[s]?:\/\/[\w.]+[\w\/]*[\w.]*\??[\w=&:\-\+\%]*[/]*/;
-    if(URL.value.match(regex)){
-        var videoUrl =  URL.value.match(regex)[0];
+    if (vurl.value.match(regex)) {
+        var videoUrl = vurl.value.match(regex)[0];
+
+        result.value = true
 
 
-        axios.get('/api/video/videoDate',{params:{videoUrl}}).then(
-					response => {
-						console.log('请求成功了',response.data)
-                       videoData.value= response.data.data.data
-                       loading.value=false
-                        result.value = true
-                        options.src=response.data.data.data.url
-					},
-					error => {
-						console.log('请求失败了',error.message)
-					}
-				)
+        axios.get('/api/video/videoDate', { params: { videoUrl } }).then(
+            response => {
+                console.log('请求成功了', response.data)
+                videoData.value = response.data.data.data
+                loading.value = false
+                options.src = response.data.data.data.url
+                tableData.value = response.data.data.data.datalist
+            },
+            error => {
+                console.log('请求失败了', error.message)
+            }
+        )
 
 
 
-       
 
 
-      
 
-  
-        
-    }else{
+
+
+
+
+    } else {
         ElMessage.error('你输入的链接有误，没有识别到抖音链接.')
     }
-    
-    
-   
+
+
+
 }
 
-const tableData = [
-    {
-        date: '2016-05-03',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles',
-    },
-    {
-        date: '2016-05-02',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles',
-    }
-]
+
 
 
 

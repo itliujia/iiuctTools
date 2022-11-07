@@ -4,7 +4,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-11-07 00:38:56
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-07 00:49:59
+ * @LastEditTime: 2022-11-07 23:51:08
  */
 
 
@@ -42,4 +42,30 @@ export function getLastTime(time = 1661420741, type = 'time') {
 
 
 
-export default { getLastTime }
+export function formatDuring(mss = 0) {
+	var days: number = Math.floor(mss / (1000 * 60 * 60 * 24)),
+		hours = Math.floor((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+		minutes = Math.floor((mss % (1000 * 60 * 60)) / (1000 * 60)),
+		seconds = Math.floor((mss % (1000 * 60)) / 1000),
+		day = '', hour = '', minute = '', second = ''
+	if (days >= 1) {
+		day = days + "天"
+	}
+	if (hours >= 1) {
+		hour = hours + "小时"
+	}
+	if (minutes >= 1) {
+		minute = minutes + "分钟"
+	}
+	if (seconds >= 1) {
+		second = seconds + "秒"
+	}
+
+
+
+	return day + hour + minute + second
+}
+
+
+
+export default { getLastTime, formatDuring }
