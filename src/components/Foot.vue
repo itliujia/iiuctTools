@@ -3,8 +3,8 @@
  * @version: 0.1.0
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:10:03
- * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-10-16 17:14:33
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-11-08 11:50:32
 -->
 <template>
   <div class="tools-footer">
@@ -65,8 +65,8 @@
         </svg></a><a title="常见问题" class="el-tooltip"><i class="eva icon eva-question-mark-outline"></i></a>
     </div>
     <div class="footer-version">
-      <div>当前版本：<b>1.0</b></div>
+      <div>当前版本：<b>Alpha1.0.2</b></div>
     </div>
   </div>
 </template>
-  
+
