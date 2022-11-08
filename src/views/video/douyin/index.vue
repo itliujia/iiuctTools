@@ -5,7 +5,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:28:02
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-08 00:24:17
+ * @LastEditTime: 2022-11-09 00:09:01
 -->
 <template>
     <Headers :isHomePage="true" />
@@ -65,10 +65,13 @@
                         <el-descriptions-item>
                             <template #label>
                                 <div class="cell-item">
-                                    视频获赞
+                                    视频主页
                                 </div>
                             </template>
-                            {{ videoData.like }}
+                            <!-- {{ videoData.like }} -->
+
+                            <el-link type="primary" :href="'https://www.douyin.com/video/'+videoData.aweme_id" target="_blank">抖音视频</el-link>
+
                         </el-descriptions-item>
                     </el-descriptions>
 
