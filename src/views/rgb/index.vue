@@ -5,7 +5,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:28:02
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-07 00:23:46
+ * @LastEditTime: 2022-11-09 00:14:54
 -->
 <template>
     <Headers :isHomePage="true" />
@@ -16,7 +16,7 @@
             </div><span class="nya-container-subtitle"></span>
             <form class="el-form nya-input-btn">
                 <span class="nya-subtitle">请输入RGB颜色值</span>
-                <el-input v-model="rgbv" placeholder="请输入RGB颜色值" class="input-with-select">
+                <el-input v-model="rgbv" placeholder="请输入RGB颜色值" clearable class="input-with-select">
                     <template #append>
                         <el-button type="primary" @click="colorRGBtoHex">开始转换</el-button>
                     </template>
@@ -36,7 +36,7 @@
             </div><span class="nya-container-subtitle"></span>
             <form class="el-form nya-input-btn">
                 <span class="nya-subtitle">请输入十六进制颜色码</span>
-                <el-input v-model="color" placeholder="请输入十六进制颜色码" class="input-with-select">
+                <el-input v-model="color" placeholder="请输入十六进制颜色码" clearable class="input-with-select">
                     <template #append>
                         <el-button type="primary" @click="a">开始转换</el-button>
                     </template>

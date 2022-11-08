@@ -3,8 +3,8 @@
  * @version: 0.1.0
  * @Author: 刘童鞋
  * @Date: 2022-10-16 16:44:40
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-11-08 12:14:34
+ * @LastEditors: 刘童鞋
+ * @LastEditTime: 2022-11-09 00:16:44
 -->
 <template>
   <Headers :isHomePage="isHomePage" />
@@ -94,7 +94,7 @@ let toolDataList = ref(
           toolUrl: '/rgb/index'
         }, {
           toolTitls: '时间戳转换',
-          toolUrl: ''
+          toolUrl: '/timestamp/index'
         }
 
       ]

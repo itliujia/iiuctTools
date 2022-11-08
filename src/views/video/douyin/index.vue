@@ -5,7 +5,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:28:02
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-09 00:09:01
+ * @LastEditTime: 2022-11-09 00:14:27
 -->
 <template>
     <Headers :isHomePage="true" />
@@ -16,7 +16,7 @@
             </div><span class="nya-container-subtitle"></span>
             <form class="el-form nya-input-btn">
                 <span class="nya-subtitle">请输入视频链接</span>
-                <el-input v-model="vurl" placeholder="请输入视频分享链接" class="input-with-select">
+                <el-input v-model="vurl" placeholder="请输入视频分享链接" clearable class="input-with-select">
                     <template #append>
                         <el-button type="primary" @click="parse">开始解析</el-button>
                     </template>
