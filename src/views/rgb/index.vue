@@ -5,7 +5,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:28:02
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-09 00:14:54
+ * @LastEditTime: 2022-11-09 22:30:04
 -->
 <template>
     <Headers :isHomePage="true" />
@@ -25,6 +25,9 @@
                     <span class="nya-subtitle" style="margin-top: 20px;">十六进制颜色码：</span>
                 <el-button :color="we" > </el-button>
                 <el-tag  style="margin-left: 10px">{{we}}</el-tag>
+
+                <vcopy :value="we"/>
+
                 </template>
                
             </form>
@@ -45,6 +48,9 @@
                     <span class="nya-subtitle" style="margin-top: 20px;">RGB颜色值：</span>
                 <el-button :color="rgbvv" > </el-button>
                 <el-tag  style="margin-left: 10px">{{rgbvv}}</el-tag>
+
+                <vcopy :value="rgbvv"/>
+
                 </template>
 
             </form>

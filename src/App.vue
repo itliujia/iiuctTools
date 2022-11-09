@@ -4,7 +4,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 16:40:09
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-10-17 00:12:10
+ * @LastEditTime: 2022-11-10 01:09:08
 -->
 <template>
   <!-- <div id="nav">
@@ -15,8 +15,8 @@
     <div id="__layout">
       <div class="index_page hide pc-transition platform-web">
         <main>
-          
-          <router-view />
+
+          <router-view v-if="isRouterActive" />
           <div class="overlay-right"></div>
           <div class="overlay-left"></div>
           <Foot />
@@ -29,37 +29,19 @@
 <script lang="ts" setup>
 import Foot from '@/components/Foot.vue'
 import Sider from '@/components/Sider.vue'
-
-
-
-
+import { nextTick, provide, ref } from 'vue';
+const isRouterActive = ref(true)
+provide('reload', () => {
+  console.log(3);
+  
+  isRouterActive.value = false
+  nextTick(() => {
+    isRouterActive.value = true
+  })
+})
 
 
 </script>
-
-
-<!-- <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style> -->
 
 
 <style lang="scss">
@@ -68,8 +50,13 @@ import Sider from '@/components/Sider.vue'
 @import "assets/css/10cde71.css";
 @import "assets/css/e1bc80b.css";
 
-td{
-  word-break:break-all; 
+td {
+  word-break: break-all;
 }
 
+svg {
+  width: 1em;
+  height: 1em;
+  fill: #ddd; //颜色
+}
 </style>

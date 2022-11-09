@@ -4,7 +4,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-11-07 00:38:56
  * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-07 23:51:08
+ * @LastEditTime: 2022-11-10 00:18:50
  */
 
 
@@ -25,21 +25,14 @@ export function getLastTime(time = 1661420741, type = 'time') {
 		":";
 	var s =
 		date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-
-
 	if (type == 'time') {
 		return Y + M + D + h + m + s;
-
-
 	}
 	if (type == 'day') {
 		return Y + M + D;
 
-
 	}
-
 }
-
 
 
 export function formatDuring(mss = 0) {
@@ -61,11 +54,50 @@ export function formatDuring(mss = 0) {
 		second = seconds + "秒"
 	}
 
-
-
 	return day + hour + minute + second
 }
 
 
 
-export default { getLastTime, formatDuring }
+export function getNowTime() {
+	var date = new Date(); // 当前日期时间
+	var year = date.getFullYear(); // 年份
+	var month = ("0" + (date.getMonth() + 1)).slice(-2); // 月份+1
+	var day = ("0" + date.getDate()).slice(-2); // 日
+	var hour = ("0" + date.getHours()).slice(-2); // 小时
+	var minute = ("0" + date.getMinutes()).slice(-2); // 分钟
+	var second = ("0" + date.getSeconds()).slice(-2); // 秒数
+	var millisecond = ("000" + date.getMilliseconds()).slice(-3); // 毫秒数0-999
+
+	var wekday = date.getDay();
+
+	var wekdate = [
+		"星期日",
+		"星期一",
+		"星期二",
+		"星期三",
+		"星期四",
+		"星期五",
+		"星期六",
+	];
+
+	let time =
+		year +
+		"年" +
+		month +
+		"月" +
+		day +
+		"日 " +
+		hour +
+		":" +
+		minute +
+		":" +
+		second +
+		" " +
+		wekdate[wekday];
+	return time
+};
+
+
+
+export default { getLastTime, formatDuring, getNowTime }

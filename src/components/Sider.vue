@@ -3,16 +3,20 @@
  * @version: 0.1.0
  * @Author: 刘童鞋
  * @Date: 2022-10-11 22:36:47
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-11-08 11:51:07
+ * @LastEditors: 刘童鞋
+ * @LastEditTime: 2022-11-10 01:21:06
 -->
 <template>
   <div class="theme-btn">
-    <div class="el-tooltip type-icon">
+    <!-- <div class="el-tooltip type-icon" @click="updateFun">
       <i class="eva eva-refresh-outline"></i>
-    </div>
-    <a class="el-tooltip type-icon"><i class="eva eva-settings-2-outline"></i></a>
+    </div> -->
+    <!-- <el-icon><RefreshRight /></el-icon> -->
+    <el-button type="primary"  @click="updateFun" icon="RefreshRight" circle  class="el-tooltip type-icon"/>
+    <el-button type="primary"  @click="updateFun" icon="Setting" circle  class="el-tooltip type-icon"/>
+    <!-- <a class="el-tooltip type-icon"><i class="eva eva-settings-2-outline"></i></a> -->
   </div>
+
 
   <div class="sidebar-left">
     <div class="el-tooltip coffee-btn">
@@ -28,5 +32,22 @@
       </div>
     </div>
   </div>
+
+
 </template>
+<script lang="ts" setup>
+
+import { ElButton } from 'element-plus';
+import { inject } from 'vue'
+const refresh:any = inject('reload')
+const updateFun = async () => {
+  await 
+  refresh()
+}
+</script>
+<style>
+.el-button+.el-button {
+    margin-left: 0px!important;
+}
+</style>
 
