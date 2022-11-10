@@ -19,6 +19,7 @@ export default {
     //注册全局组件
     app.component('vcopy', vcopy);
 
+
     //注册全局指令
     app.directive('copy', copy)
 
