@@ -1338,8 +1338,8 @@ img {
 
 .nya-input-btn .nya-subtitle {
     display: block !important;
-    font-size: 1.125rem !important;
-    margin-bottom: .625rem !important;
+    font-size: 1.125rem;
+    margin-bottom: 1rem !important;
     font-weight: 700 !important
 }
 

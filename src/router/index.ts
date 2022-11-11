@@ -1,10 +1,8 @@
 /*
- * @Descripttion: 
- * @version: 
- * @Author: 刘童鞋
- * @Date: 2022-10-16 16:40:09
- * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-09 00:16:31
+ * @Description: 路由配置
+ * @Author: Liu Jia
+ * @Date: 2022-11-06 14:03:18
+ * @LastEditTime: 2022-11-12 04:56:10
  */
 
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
@@ -17,31 +15,20 @@ const routes: Array<RouteRecordRaw> = [
     component: Home
   },
   {
-    path: '/video/douyin',
+    path: '/douyin',
     name: 'douyin',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Video/douyin/index.vue')
+    component: () => import('../views/Video/douyin/index.vue')
   },
   {
-    path: '/rgb/index',
+    path: '/rgb/',
     name: 'rgb',
-    component: () => import(/* webpackChunkName: "about" */ '../views/rgb/index.vue')
+    component: () => import('../views/Code/rgb/index.vue')
   },
 
   {
-    path: '/timestamp/index',
+    path: '/timestamp/',
     name: 'timestamp',
-    component: () => import(/* webpackChunkName: "about" */ '../views/timestamp/index.vue')
-  },
-
-
-
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import('../views/Code/timestamp/index.vue')
   }
 ]
 
