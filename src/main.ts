@@ -1,11 +1,3 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: 刘童鞋
- * @Date: 2022-10-16 16:40:09
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-11-12 03:08:11
- */
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'

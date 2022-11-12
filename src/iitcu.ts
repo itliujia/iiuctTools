@@ -1,11 +1,10 @@
 /*
- * @Description: 自定义
- * @version: 1.0.1
- * @Author: 刘童鞋
+ * @Description: iicut
+ * @Author: Liu Jia
  * @Date: 2022-11-09 21:56:43
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-11-12 02:43:20
+ * @LastEditTime: 2022-11-12 16:27:33
  */
+
 
 import vcopy from './components/base/copy.vue'
 
