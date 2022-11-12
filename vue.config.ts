@@ -1,11 +1,10 @@
 /*
- * @Descripttion:
- * @version:
- * @Author: 刘童鞋
- * @Date: 2022-10-16 17:12:35
- * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-05 00:55:01
+ * @Description: file content
+ * @Author: Liu Jia
+ * @Date: 2022-11-06 14:03:18
+ * @LastEditTime: 2022-11-12 16:03:48
  */
+
 module.exports = {
   lintOnSave: false, //关闭代码校验
   devServer: {
