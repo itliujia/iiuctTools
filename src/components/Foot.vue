@@ -2,12 +2,18 @@
  * @Description: 底部
  * @Author: Liu Jia
  * @Date: 2022-11-08 23:57:21
- * @LastEditTime: 2022-11-12 04:51:31
+ * @LastEditTime: 2022-11-14 00:43:52
 -->
 
 <template>
+  <div style="text-align: center;margin: 1.25rem 0 ;" v-if="isHomePage">
+    <el-button type="primary" :icon="Back" plain round size="small">返回首页</el-button>
+  </div>
   <div class="tools-footer">
+
+
     <div class="vfooter">
+
       <el-tooltip class="box-item mlf5" effect="dark" content="GitHub" placement="top">
         <svg t="1642947467200" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1573"
           width="200" height="200" class="icon">
@@ -59,7 +65,19 @@
 </template>
 <script lang="ts" setup>
 import config from "@/config/index";
-import { ElTooltip } from "element-plus";
+import { ElButton, ElTooltip } from "element-plus";
+import { Back } from "@element-plus/icons-vue";
+import router from "@/router";
+import { ref } from "vue";
+
+
+let isHomePage = ref(true)
+const props = defineProps({
+  isHomePage: Boolean
+})
+
+isHomePage = ref(props.isHomePage)
+
 </script>
 
 <style>
