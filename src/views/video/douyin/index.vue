@@ -1,11 +1,11 @@
 
 <!--
  * @Descripttion: 抖音视频解析
- * @version: 
+ * @version:
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:28:02
- * @LastEditors: 刘童鞋
- * @LastEditTime: 2022-11-09 00:14:27
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-11-12 17:11:32
 -->
 <template>
     <Headers :isHomePage="true" />
@@ -70,7 +70,8 @@
                             </template>
                             <!-- {{ videoData.like }} -->
 
-                            <el-link type="primary" :href="'https://www.douyin.com/video/'+videoData.aweme_id" target="_blank">抖音视频</el-link>
+                            <el-link type="primary" :href="'https://www.douyin.com/video/' + videoData.aweme_id"
+                                target="_blank">抖音视频</el-link>
 
                         </el-descriptions-item>
                     </el-descriptions>
@@ -94,22 +95,23 @@
                 <el-table-column align="center" label="操作">
                     <template #default="scope">
                         <el-button-group>
-                            <el-tooltip class="box-item" effect="dark" content="下载（注意事项：如果弹出新窗口，则按【Ctrl + S】键进行下载）"
+                            <el-tooltip class="box-item" effect="dark" content="如果弹出新窗口，则按【Ctrl + S】键进行下载"
                                 placement="top">
                                 <el-button type="primary" size="small" @click="handleEdit(scope.$index, scope.row)">
                                     <el-icon>
                                         <Download />
                                     </el-icon>
-                                下载</el-button>
+                                    下载
+                                </el-button>
                             </el-tooltip>
 
-                            <el-tooltip class="box-item" effect="dark" content="预览（注意事项：如果出现403异常，则在403页面刷新一下）"
-                                placement="top">
+                            <el-tooltip class="box-item" effect="dark" content="如果出现403异常，则在403页面刷新一下" placement="top">
                                 <el-button type="warning" size="small" @click="handleView(scope.$index, scope.row)">
                                     <el-icon>
                                         <View />
                                     </el-icon>
-                                预览</el-button>
+                                    预览
+                                </el-button>
                             </el-tooltip>
                         </el-button-group>
 
