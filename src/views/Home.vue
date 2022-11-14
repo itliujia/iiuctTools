@@ -4,7 +4,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 16:44:40
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-11-12 05:10:50
+ * @LastEditTime: 2022-11-15 00:04:42
 -->
 <template>
   <Headers :isHomePage="isHomePage" />
@@ -184,6 +184,6 @@ const jumpPage = (url: string, state: string) => {
 
 let isHomePage = false;
 
-document.title = "小合集工具箱";
+// document.title = "小合集工具箱";
 </script>
 

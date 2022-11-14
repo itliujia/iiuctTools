@@ -1,10 +1,3 @@
-/*
- * @Description: file content
- * @Author: Liu Jia
- * @Date: 2022-11-06 14:03:18
- * @LastEditTime: 2022-11-12 16:03:48
- */
-
 module.exports = {
   lintOnSave: false, //关闭代码校验
   devServer: {

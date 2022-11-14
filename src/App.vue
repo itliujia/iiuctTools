@@ -1,3 +1,4 @@
+
 <template>
   <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
@@ -10,6 +11,7 @@
           <router-view v-if="isRouterActive" />
           <div class="overlay-right"></div>
           <div class="overlay-left"></div>
+          <el-backtop :right="20" />
           <Foot />
         </main>
         <Sider />
@@ -20,7 +22,9 @@
 <script lang="ts" setup>
 import Foot from "@/components/Foot.vue";
 import Sider from "@/components/Sider.vue";
-import { nextTick, provide, ref } from "vue";
+import { ElBacktop } from "element-plus";
+import { nextTick, provide, ref, } from "vue";
+import { RouterView } from "vue-router";
 const isRouterActive = ref(true);
 provide("reload", () => {
   console.log(3);
