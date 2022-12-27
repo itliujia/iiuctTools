@@ -1,3 +1,10 @@
+<!--
+ * @Description: file content
+ * @Author: Liu Jia
+ * @Date: 2022-11-17 23:46:51
+ * @LastEditTime: 2022-11-19 23:28:20
+-->
+
 <template>
   <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
@@ -29,8 +36,8 @@ provide("reload", () => {
   isRouterActive.value = false
   nextTick(() => {
     isRouterActive.value = true
-  })
-})
+  });
+});
 </script>
 
 <style lang="scss">

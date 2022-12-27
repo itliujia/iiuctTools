@@ -1,3 +1,4 @@
+
 <template>
   <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
@@ -29,8 +30,8 @@ provide("reload", () => {
   isRouterActive.value = false
   nextTick(() => {
     isRouterActive.value = true
-  })
-})
+  });
+});
 </script>
 
 <style lang="scss">

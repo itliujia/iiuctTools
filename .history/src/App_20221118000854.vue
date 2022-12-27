@@ -1,3 +1,10 @@
+<!--
+ * @Description: file content
+ * @Author: Liu Jia
+ * @Date: 2022-11-17 23:46:51
+ * @LastEditTime: 2022-11-18 00:08:54
+-->
+
 <template>
   <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
@@ -19,18 +26,20 @@
   </div>
 </template>
 <script lang="ts" setup>
-import Foot from "@/components/Foot.vue"
-import Sider from "@/components/Sider.vue"
-import { ElBacktop } from "element-plus"
-import { nextTick, provide, ref, } from "vue"
-import { RouterView } from "vue-router"
-const isRouterActive = ref(true)
+import Foot from "./components/Foot.vue";
+import Sider from "./components/Sider.vue";
+import { ElBacktop } from "element-plus";
+import { nextTick, provide, ref, } from "vue";
+import { RouterView } from "vue-router";
+const isRouterActive = ref(true);
 provide("reload", () => {
-  isRouterActive.value = false
+  console.log(3);
+
+  isRouterActive.value = false;
   nextTick(() => {
-    isRouterActive.value = true
-  })
-})
+    isRouterActive.value = true;
+  });
+});
 </script>
 
 <style lang="scss">

@@ -2,7 +2,7 @@
 import axios from "axios"
 
 export default (url: string, method: any, params: Object) => {
-    var baseURL = 'https://api.iiuct.cn/'
+    var baseURL = 'http://api.iiuct.cn/'
     return new Promise((resolve, reject) => {
         axios({
             url: baseURL + url,

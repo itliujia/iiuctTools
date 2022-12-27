@@ -29,8 +29,8 @@ provide("reload", () => {
   isRouterActive.value = false
   nextTick(() => {
     isRouterActive.value = true
-  })
-})
+  });
+});
 </script>
 
 <style lang="scss">
