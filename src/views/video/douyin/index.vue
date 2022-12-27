@@ -5,7 +5,7 @@
  * @Author: 刘童鞋
  * @Date: 2022-10-16 17:28:02
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2022-11-12 17:11:32
+ * @LastEditTime: 2022-11-17 23:38:41
 -->
 <template>
     <Headers :isHomePage="true" />
@@ -160,6 +160,9 @@ import { ElMessage } from 'element-plus'
 import { getLastTime, formatDuring } from '@/utils/time'
 import axios from 'axios'
 
+import api from '@/api/index'
+
+
 getLastTime
 formatDuring
 
@@ -217,32 +220,16 @@ let download = (fileUrl: string, title: string, type: string) => {
 let parse = () => {
     let regex = /http[s]?:\/\/[\w.]+[\w\/]*[\w.]*\??[\w=&:\-\+\%]*[/]*/;
     if (vurl.value.match(regex)) {
-        var videoUrl = vurl.value.match(regex)[0];
-
+        var videoUrl = vurl.value.match(regex)?.[0];
         result.value = true
-
-
-        axios.get('/api/video/videoDate', { params: { videoUrl } }).then(
-            response => {
-                console.log('请求成功了', response.data)
-                videoData.value = response.data.data.data
+        api.getVedio({ videoUrl })?.then((res: any) => {
+            if (res.code) {
+                videoData.value = res.data.data
                 loading.value = false
-                options.src = response.data.data.data.url
-                tableData.value = response.data.data.data.datalist
-            },
-            error => {
-                console.log('请求失败了', error.message)
+                options.src = res.data.data.url
+                tableData.value = res.data.data.datalist
             }
-        )
-
-
-
-
-
-
-
-
-
+        })
 
     } else {
         ElMessage.error('你输入的链接有误，没有识别到抖音链接.')
